@@ -1,16 +1,17 @@
-%define vhash 7f94cc6b4d8e
+%define vhash 5ebc6aae4d7c
 %define packdir %{name}-plugin-%{vhash}
 
 Name: dovecot-antispam
 Summary: Train the spam filter by moving email messages in and out of the IMAP spam folder
-Version: 0.0.48
+Version: 0.0.49
 Release: 1%{?dist}
 License: GPL2
 URL: http://wiki2.dovecot.org/Plugins/Antispam
 Source0: %vhash.tar.gz
-Patch0: 5e8351bcfb29.patch
 
-BuildRequires: autoconf, automake, gcc, dovecot-devel >= 2.0.9
+BuildRequires: autoconf, automake, gcc
+BuildRequires: dovecot-devel >= 2.1.16
+BuildRequires: openssl-devel >= 1.0.0
 
 %description 
 
@@ -22,7 +23,6 @@ http://johannes.sipsolutions.net/Projects/dovecot-antispam
 
 %prep
 %setup -n %packdir
-%patch0 -R -p1 
 
 %build
 ./autogen.sh
@@ -40,6 +40,9 @@ make
 /usr/lib64/dovecot/lib90_antispam_plugin.so
 
 %changelog
+* Fri May 24 2013 Davide Principi <davide.principi@nethesis.it> - 0.0.49-1
+- New version, for dovecot 2.1
+
 * Wed Nov 21 2012 Davide Principi <davide.principi@nethesis.it> - 0.0.48-1
 - Build 0.0.48 - hash 7f94cc6b4d8e
 
