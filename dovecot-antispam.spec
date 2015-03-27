@@ -4,10 +4,11 @@
 Name: dovecot-antispam
 Summary: Train the spam filter by moving email messages in and out of the IMAP spam folder
 Version: 0.0.49
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL2
 URL: http://wiki2.dovecot.org/Plugins/Antispam
-Source0: %vhash.tar.gz
+Source0: %{name}-%{version}.tar.gz
+Source1: http://hg.dovecot.org/dovecot-antispam-plugin/archive/%{vhash}.tar.gz
 
 BuildRequires: autoconf, automake, gcc
 BuildRequires: dovecot-devel >= 2.1.16
@@ -22,7 +23,7 @@ prior to v2.0. The original project can be found at
 http://johannes.sipsolutions.net/Projects/dovecot-antispam
 
 %prep
-%setup -n %packdir
+%setup -b 1 -n %packdir
 
 %build
 ./autogen.sh
@@ -40,6 +41,9 @@ make
 /usr/lib64/dovecot/lib90_antispam_plugin.so
 
 %changelog
+* Fri Mar 27 2015 Davide Principi <davide.principi@nethesis.it> - 0.0.49-2
+- Rebuild for NethServer 6.6
+
 * Fri May 24 2013 Davide Principi <davide.principi@nethesis.it> - 0.0.49-1
 - New version, for dovecot 2.1
 
