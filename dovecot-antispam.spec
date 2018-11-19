@@ -11,7 +11,7 @@ Source0: %{name}-%{version}.tar.gz
 Source1: http://hg.dovecot.org/dovecot-antispam-plugin/archive/%{vhash}.tar.gz
 
 BuildRequires: autoconf, automake, gcc
-BuildRequires: dovecot-devel >= 2.1.16
+BuildRequires: dovecot-devel >= 2.2.36
 BuildRequires: openssl-devel >= 1.0.0
 
 %description 
